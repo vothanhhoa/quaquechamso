@@ -177,6 +177,10 @@ const DD = [
  {id:"banh-bo-thot-not", ten:"Bánh bò thốt nốt", vung:"Núi Cấm · Tịnh Biên", ghim:[10.505842,104.983045],
   p360:{ma:"CIHM0ogKEICAgICE1MjGxwE", t:[10.5058086,104.9831666], huong:90}, noi360:"Tượng Phật Di Lặc trên Núi Cấm",
   loi:["Bột gạo, đường thốt nốt, nước cốt dừa, hấp cho nở xốp.","Bánh mềm xốp, thơm mùi thốt nốt, mua làm quà ai cũng thích.","Ghé Tịnh Biên, nhớ lên núi Cấm ngắm mây."]},
+ {id:"banh-xeo-bay-nui", ten:"Bánh xèo rau rừng", vung:"Hồ Thủy Liêm, Núi Cấm · Bảy Núi", ghim:[10.503663,104.983297], tim:"Bánh xèo Núi Cấm Tịnh Biên",
+  p360:{ma:"CIHM0ogKEICAgIDqpZOU0wE", t:[10.503663,104.983297], huong:86}, noi360:"Hồ Thủy Liêm trên Núi Cấm",
+  yt:"IW9YmkOtux0", nhan:"Video của nhóm học sinh trên YouTube (hình ảnh mô phỏng, có dùng công cụ AI)",
+  loi:["Bánh xèo vàng giòn, cuốn với rau rừng vùng Bảy Núi.","Chấm nước mắm chua ngọt, ăn giữa không khí núi rừng."]},
  {id:"com-tam-long-xuyen", ten:"Cơm tấm Long Xuyên", vung:"Chợ Long Xuyên", ghim:[10.3834089,105.4450871],
   p360:{ma:"CIABIhCgj1z_OmIeCQn2KoYHMUy3", t:[10.389596,105.435543], huong:197}, noi360:"Bảo tàng An Giang (Long Xuyên), cách chợ khoảng 1,3 km",
   loi:["Cơm tấm lạp xưởng tươi, trứng ốp la, chan nước mắm ngọt.","Ăn xong, ghé chợ nổi Long Xuyên ngắm ghe xuồng."]},
@@ -192,6 +196,10 @@ const DD = [
  {id:"ghe-ham-ninh", ten:"Ghẹ Hàm Ninh – bánh canh ghẹ", vung:"Làng chài Hàm Ninh · Phú Quốc", ghim:[10.1822,104.0478], tim:"Làng chài Hàm Ninh Phú Quốc ghẹ",
   p360:{ma:"CIHM0ogKEICAgIDqy4b98wE", t:[10.1804,104.0454], huong:15}, noi360:"Làng chài Hàm Ninh, Phú Quốc",
   loi:["Ghẹ tươi luộc chín, chấm muối tiêu chanh, ăn ngay bên bến cá.","Bánh canh ghẹ nóng hổi, có ghẹ, tôm, rau thơm — ngon nhất lúc hoàng hôn trên cầu cảng."]},
+ {id:"nhum-bien-phu-quoc", ten:"Nhum biển nướng mỡ hành", vung:"Dinh Cậu, Dương Đông · Phú Quốc", ghim:[10.217215,103.956431], tim:"Nhum biển Phú Quốc",
+  p360:{ma:"CIHM0ogKEICAgIDW6OS8-AE", t:[10.217215,103.956431], huong:90}, noi360:"Dinh Cậu, bờ biển Dương Đông, Phú Quốc",
+  nhan:"Video của nhóm học sinh (hình ảnh mô phỏng, có dùng công cụ AI)",
+  loi:["Nhum (cầu gai) vớt từ vùng biển đá, tách vỏ lấy phần trứng vàng cam.","Nướng mỡ hành, rắc đậu phộng, ăn kèm muối tiêu chanh bên bờ biển."]},
  {id:"kho-ca-loc-an-phu", ten:"Khô cá lóc", vung:"Búng Bình Thiên · An Phú", ghim:[10.9199706,105.0718158], tim:"Búng Bình Thiên An Phú",
   p360:null, noi360:"Búng Bình Thiên (An Phú)",
   toanCanh:{anh:"anh/toan-canh-bung-binh-thien.jpg", haov:160, vaov:89.3, vOffset:0},
@@ -256,8 +264,8 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Video giới thiệu</h3>
-        <div class="phim"><video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video></div>
-        <span class="nhanai">Video mô phỏng · hình ảnh, người dẫn do AI tạo</span>
+        <div class="phim">${d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
+        <span class="nhanai">${d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo"}</span>
       </div>
     </div>
     <div class="hai" style="margin-top:16px">
