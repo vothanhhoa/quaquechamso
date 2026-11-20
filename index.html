@@ -115,6 +115,9 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
     <h2>Các món quà quê</h2>
     <div class="luoi" id="luoi"></div>
 
+    <h2>Học sinh tự tay làm quà</h2>
+    <div class="luoi" id="tayLam" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
+
     <h2 id="phim-tong">Phim «Hành trình các món quà quê An Giang»</h2>
     <div class="phim">
       <video src="video/hanh-trinh-8-mon.mp4" poster="anh/bia.jpg" controls preload="none" playsinline></video>
@@ -176,6 +179,7 @@ const DD = [
   loi:["Gà ướp sả, lá chúc, đốt trên than hồng, chấm muối ớt.","Gần đó có đồi Tức Dụp, chùa và hồ Tà Pạ."]},
  {id:"banh-bo-thot-not", ten:"Bánh bò thốt nốt", vung:"Núi Cấm · Tịnh Biên", ghim:[10.505842,104.983045],
   p360:{ma:"CIHM0ogKEICAgICE1MjGxwE", t:[10.5058086,104.9831666], huong:90}, noi360:"Tượng Phật Di Lặc trên Núi Cấm",
+  tayLam:{video:"video/tay-lam-nui-cam.mp4", anh:"anh/tay-lam-nui-cam.jpg", ten:"Móc len mô hình Núi Cấm"},
   loi:["Bột gạo, đường thốt nốt, nước cốt dừa, hấp cho nở xốp.","Bánh mềm xốp, thơm mùi thốt nốt, mua làm quà ai cũng thích.","Ghé Tịnh Biên, nhớ lên núi Cấm ngắm mây."]},
  {id:"banh-xeo-bay-nui", ten:"Bánh xèo rau rừng", vung:"Hồ Thủy Liêm, Núi Cấm · Bảy Núi", ghim:[10.503663,104.983297], tim:"Bánh xèo Núi Cấm Tịnh Biên",
   p360:{ma:"CIHM0ogKEICAgIDqpZOU0wE", t:[10.503663,104.983297], huong:86}, noi360:"Hồ Thủy Liêm trên Núi Cấm",
@@ -234,6 +238,7 @@ function veTrangChu(){
     bien.push(d.ghim);
   });
   banDo.fitBounds(bien,{padding:[24,24]});
+  $('#tayLam').innerHTML = DD.filter(d=>d.tayLam).map(d=>`<div class="the" style="cursor:default"><video src="${d.tayLam.video}" poster="${d.tayLam.anh}" controls preload="none" playsinline style="border-radius:0;aspect-ratio:16/9"></video><div><b>${d.tayLam.ten}</b><span>Quà «${d.ten}» · video học sinh tự quay</span></div></div>`).join('') || '<div class="sap">Video «tay làm» sắp cập nhật</div>';
   $('#luoi').innerHTML = DD.map((d,i)=>`<a class="the" href="#${d.id}"><img src="anh/${d.id}.jpg" alt="${d.ten}" loading="lazy"><div><b><span class="so">${i+1}</span>${d.ten}</b><span>${d.vung}</span></div></a>`).join('');
 }
 
@@ -275,7 +280,7 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Chúng em làm món quà này thế nào</h3>
-        <div class="sap">🧶 Video «tay làm» của nhóm học sinh — sắp cập nhật</div>
+        ${d.tayLam ? `<video src="${d.tayLam.video}" poster="${d.tayLam.anh}" controls preload="none" playsinline style="aspect-ratio:16/9;max-height:none"></video><span class="nhanai">${d.tayLam.ten} — video học sinh tự quay</span>` : `<div class="sap">🧶 Video «tay làm» của nhóm học sinh — sắp cập nhật</div>`}
       </div>
     </div>
     <h2>Các món quà quê khác</h2>
