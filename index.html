@@ -308,8 +308,11 @@ function veDiaDiem(d){
 }
 
 /* ---------- điều hướng theo mã QR (#ten-mon) ---------- */
+/* mã ngắn trên thẻ QR nhỏ: #1 … #13 (0 = cả bộ sưu tập) */
+const MA_NGAN = {"1":"ga-dot-o-thum","2":"banh-bo-thot-not","3":"com-tam-long-xuyen","4":"bun-ca-chau-doc","5":"goi-ca-trich-phu-quoc","6":"banh-khoai-phu-quoc","7":"kho-ca-loc-an-phu","8":"lau-mam","9":"ghe-ham-ninh","10":"nhum-bien-phu-quoc","11":"banh-xeo-bay-nui","12":"lap-xuong-lang-cham","13":"canh-chua-ca-linh"};
 function diTheoDuong(){
-  const id = decodeURIComponent(location.hash.slice(1)), d = DD.find(x=>x.id===id);
+  let id = decodeURIComponent(location.hash.slice(1)); if (MA_NGAN[id]) { id = MA_NGAN[id]; history.replaceState(null,'','#'+id); }
+  const d = DD.find(x=>x.id===id);
   document.querySelectorAll('video').forEach(v=>v.pause());
   if (d) {
     $('#trangchu').style.display='none'; $('#diadiem').style.display='block';
