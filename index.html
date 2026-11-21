@@ -215,7 +215,7 @@ const DD = [
   loi:["Món của mùa nước nổi vùng thượng nguồn An Giang: cá linh non nấu chua với bông súng, bông điên điển, giá, rau thơm.","Mô hình móc len do nhóm học sinh Trường TH&THCS Cái Dầu làm: tô canh, cá linh, bông súng tím, bông điên điển vàng, chén nước mắm ớt."]},
  {id:"lap-xuong-lang-cham", ten:"Lạp xưởng làng Chăm", vung:"Làng Chăm Châu Giang · Châu Phong", ghim:[10.7104094,105.1286151], tim:"Thánh đường Hồi giáo Mubarak Châu Giang",
   p360:null, noi360:"Thánh đường Hồi giáo Mubarak, làng Chăm Châu Giang",
-  vv:2, nhan:"Video của nhóm học sinh, có phụ đề tiếng Anh (hình ảnh mô phỏng, có dùng công cụ AI)",
+  vid:"lap-xuong-cham-beef", nhan:"Video của nhóm học sinh, có phụ đề tiếng Anh (hình ảnh mô phỏng, có dùng công cụ AI)",
   tayLam:[{video:"video/tay-lam-lap-xuong-nan.mp4", anh:"anh/tay-lam-lap-xuong-nan.jpg", ten:"Gắn khoen, lắp ráp móc khoá lạp xưởng"},
           {video:"video/tay-lam-lap-xuong-phu-bong.mp4", anh:"anh/tay-lam-lap-xuong-phu-bong.jpg", ten:"Phủ bóng, sấy đèn cho móc khoá cứng, bóng"}],
   loi:["Lạp xưởng có vị ngọt, thơm béo, chua nhẹ và đậm đà.","Ăn kèm rau sống, dưa leo; ghé làng Chăm bên kia sông Hậu, đối diện Châu Đốc."]},
@@ -307,7 +307,7 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Video giới thiệu</h3>
-        <div class="phim">${d.chuaVideo ? `<img src="${d.moHinh}" alt="Sản phẩm của nhóm: ${d.ten}" style="width:100%;border-radius:14px;display:block"><div class="sap" style="margin-top:8px">🎬 Video của nhóm học sinh — sắp cập nhật</div>` : d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4${d.vv ? "?v=" + d.vv : ""}" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
+        <div class="phim">${d.chuaVideo ? `<img src="${d.moHinh}" alt="Sản phẩm của nhóm: ${d.ten}" style="width:100%;border-radius:14px;display:block"><div class="sap" style="margin-top:8px">🎬 Video của nhóm học sinh — sắp cập nhật</div>` : d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.vid || d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
         <span class="nhanai">${d.chuaVideo ? (d.nhanMoHinh || "Ảnh mô hình móc len thật của nhóm học sinh") : (d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo")}</span>
       </div>
     </div>
