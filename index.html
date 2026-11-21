@@ -191,6 +191,10 @@ const DD = [
  {id:"bun-ca-chau-doc", ten:"Bún cá Châu Đốc", vung:"Chợ Châu Đốc", ghim:[10.7110765,105.1188769],
   p360:{ma:"CIHM0ogKEICAgIDktZeD7QE", t:[10.71108,105.11888], huong:90}, noi360:"Khu chợ Châu Đốc",
   loi:["Nước lèo vàng nghệ, cá lóc đồng, ăn kèm rau sống.","Ăn xong, ghé núi Sam, viếng Miếu Bà Chúa Xứ."]},
+ {id:"canh-chua-ca-linh", ten:"Canh chua cá linh bông điên điển", vung:"Chợ Cái Dầu · Châu Phú", ghim:[10.567931,105.241382], tim:"Chợ Cái Dầu Châu Phú",
+  p360:null, noi360:"Chợ Cái Dầu, Châu Phú — quê hương của nhóm học sinh",
+  chuaVideo:true, moHinh:"anh/canh-chua-ca-linh-mo-hinh.jpg",
+  loi:["Món của mùa nước nổi vùng thượng nguồn An Giang: cá linh non nấu chua với bông súng, bông điên điển, giá, rau thơm.","Mô hình móc len do nhóm học sinh Trường TH&THCS Cái Dầu làm: tô canh, cá linh, bông súng tím, bông điên điển vàng, chén nước mắm ớt."]},
  {id:"lap-xuong-lang-cham", ten:"Lạp xưởng làng Chăm", vung:"Làng Chăm Châu Giang · Châu Phong", ghim:[10.7104094,105.1286151], tim:"Thánh đường Hồi giáo Mubarak Châu Giang",
   p360:null, noi360:"Thánh đường Hồi giáo Mubarak, làng Chăm Châu Giang",
   yt:"Hb6lErrhLiQ", nhan:"Video của nhóm học sinh trên YouTube (hình ảnh mô phỏng, có dùng công cụ AI)",
@@ -273,8 +277,8 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Video giới thiệu</h3>
-        <div class="phim">${d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
-        <span class="nhanai">${d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo"}</span>
+        <div class="phim">${d.chuaVideo ? `<img src="${d.moHinh}" alt="Mô hình móc len ${d.ten}" style="width:100%;border-radius:14px;display:block"><div class="sap" style="margin-top:8px">🎬 Video của nhóm học sinh — sắp cập nhật</div>` : d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
+        <span class="nhanai">${d.chuaVideo ? "Ảnh mô hình móc len thật của nhóm học sinh" : (d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo")}</span>
       </div>
     </div>
     <div class="hai" style="margin-top:16px">
