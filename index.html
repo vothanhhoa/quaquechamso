@@ -205,7 +205,7 @@ const DD = [
  {id:"lap-xuong-lang-cham", ten:"Lạp xưởng làng Chăm", vung:"Làng Chăm Châu Giang · Châu Phong", ghim:[10.7104094,105.1286151], tim:"Thánh đường Hồi giáo Mubarak Châu Giang",
   p360:null, noi360:"Thánh đường Hồi giáo Mubarak, làng Chăm Châu Giang",
   yt:"Hb6lErrhLiQ", nhan:"Video của nhóm học sinh trên YouTube (hình ảnh mô phỏng, có dùng công cụ AI)",
-  tayLam:[{video:"video/tay-lam-lap-xuong-nan.mp4", anh:"anh/tay-lam-lap-xuong-nan.jpg", ten:"Nặn từng khúc lạp xưởng bằng đất sét"},
+  tayLam:[{video:"video/tay-lam-lap-xuong-nan.mp4", anh:"anh/tay-lam-lap-xuong-nan.jpg", ten:"Gắn khoen, lắp ráp móc khoá lạp xưởng"},
           {video:"video/tay-lam-lap-xuong-phu-bong.mp4", anh:"anh/tay-lam-lap-xuong-phu-bong.jpg", ten:"Phủ bóng, sấy đèn cho móc khoá cứng, bóng"}],
   loi:["Lạp xưởng có vị ngọt, thơm béo, chua nhẹ và đậm đà.","Ăn kèm rau sống, dưa leo; ghé làng Chăm bên kia sông Hậu, đối diện Châu Đốc."]},
  {id:"goi-ca-trich-phu-quoc", ten:"Gỏi cá trích", vung:"Làng chài Hàm Ninh · Phú Quốc", ghim:[10.1804,104.0454],
@@ -229,7 +229,15 @@ const DD = [
  {id:"lau-mam", ten:"Lẩu mắm", vung:"Núi Sập · Thoại Sơn", ghim:[10.2624386,105.2680195], tim:"Hồ Ông Thoại Núi Sập",
   p360:null, noi360:"Khu du lịch Hồ Ông Thoại (Núi Sập, Thoại Sơn)",
   toanCanh:{anh:"anh/toan-canh-ho-ong-thoai.jpg", haov:160, vaov:89.3, vOffset:0},
-  loi:["Rau ăn kèm: bông điên điển, bông súng, rau muống, củ nèo, giá.","Nhúng rau, chan nước lẩu, thơm đậm vị mắm quê."]}
+  loi:["Rau ăn kèm: bông điên điển, bông súng, rau muống, củ nèo, giá.","Nhúng rau, chan nước lẩu, thơm đậm vị mắm quê."]},
+ {id:"sim-rung-phu-quoc", ten:"Trái sim rừng – rượu sim", vung:"Vườn sim · Phú Quốc", ghim:[10.1919315,103.9939229], tim:"Vườn sim Phú Quốc",
+  p360:null, noi360:"Vùng vườn sim, đồi sim ở Phú Quốc",
+  chuaVideo:true, moHinh:"anh/sim-rung-phu-quoc-mo-hinh.jpg", nhanMoHinh:"Ảnh móc khoá đất sét thật của nhóm học sinh",
+  loi:["Sim mọc nhiều trên đồi Phú Quốc; trái chín tím sẫm, ruột hồng, vị ngọt chát.","Trái sim được ngâm thành rượu sim, đặc sản nổi tiếng của đảo (dành cho người lớn); du khách còn mua mứt sim, nước cốt sim làm quà.","Móc khoá đất sét: chùm trái sim, nửa trái bổ đôi thấy ruột hồng, kèm bông sim."]},
+ {id:"duong-thot-not-tinh-bien", ten:"Đường thốt nốt", vung:"Chợ Tịnh Biên · Tịnh Biên", ghim:[10.6059704,104.9446467], tim:"Chợ Tịnh Biên An Giang",
+  p360:null, noi360:"Chợ Tịnh Biên, vùng Bảy Núi",
+  chuaVideo:true, moHinh:"anh/duong-thot-not-tinh-bien-mo-hinh.jpg", nhanMoHinh:"Ảnh móc khoá đất sét thật của nhóm học sinh",
+  loi:["Nước thốt nốt hứng từ hoa cây thốt nốt, nấu cô lại thành đường thốt nốt thơm, ngọt thanh.","Đường dạng kẹo viên tròn vàng óng, bán nhiều ở chợ Tịnh Biên và dọc đường lên núi Cấm.","Móc khoá đất sét: hộp “Đường thốt nốt dạng kẹo” thu nhỏ, có hình hàng thốt nốt."]}
 ];
 
 const $ = s => document.querySelector(s);
@@ -288,8 +296,8 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Video giới thiệu</h3>
-        <div class="phim">${d.chuaVideo ? `<img src="${d.moHinh}" alt="Mô hình móc len ${d.ten}" style="width:100%;border-radius:14px;display:block"><div class="sap" style="margin-top:8px">🎬 Video của nhóm học sinh — sắp cập nhật</div>` : d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
-        <span class="nhanai">${d.chuaVideo ? "Ảnh mô hình móc len thật của nhóm học sinh" : (d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo")}</span>
+        <div class="phim">${d.chuaVideo ? `<img src="${d.moHinh}" alt="Sản phẩm của nhóm: ${d.ten}" style="width:100%;border-radius:14px;display:block"><div class="sap" style="margin-top:8px">🎬 Video của nhóm học sinh — sắp cập nhật</div>` : d.yt ? `<div style="position:relative;aspect-ratio:9/16;max-height:78vh;margin:0 auto"><iframe src="https://www.youtube-nocookie.com/embed/${d.yt}" title="Video ${d.ten}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="video/${d.id}.mp4" poster="anh/${d.id}.jpg" controls preload="metadata" playsinline></video>`}</div>
+        <span class="nhanai">${d.chuaVideo ? (d.nhanMoHinh || "Ảnh mô hình móc len thật của nhóm học sinh") : (d.nhan || "Video mô phỏng · hình ảnh, người dẫn do AI tạo")}</span>
       </div>
     </div>
     <div class="hai" style="margin-top:16px">
@@ -321,7 +329,7 @@ function veDiaDiem(d){
 
 /* ---------- điều hướng theo mã QR (#ten-mon) ---------- */
 /* mã ngắn trên thẻ QR nhỏ: #1 … #13 (0 = cả bộ sưu tập) */
-const MA_NGAN = {"1":"ga-dot-o-thum","2":"banh-bo-thot-not","3":"com-tam-long-xuyen","4":"bun-ca-chau-doc","5":"goi-ca-trich-phu-quoc","6":"banh-khoai-phu-quoc","7":"kho-ca-loc-an-phu","8":"lau-mam","9":"ghe-ham-ninh","10":"nhum-bien-phu-quoc","11":"banh-xeo-bay-nui","12":"lap-xuong-lang-cham","13":"canh-chua-ca-linh"};
+const MA_NGAN = {"1":"ga-dot-o-thum","2":"banh-bo-thot-not","3":"com-tam-long-xuyen","4":"bun-ca-chau-doc","5":"goi-ca-trich-phu-quoc","6":"banh-khoai-phu-quoc","7":"kho-ca-loc-an-phu","8":"lau-mam","9":"ghe-ham-ninh","10":"nhum-bien-phu-quoc","11":"banh-xeo-bay-nui","12":"lap-xuong-lang-cham","13":"canh-chua-ca-linh","14":"sim-rung-phu-quoc","15":"duong-thot-not-tinh-bien"};
 function diTheoDuong(){
   let id = decodeURIComponent(location.hash.slice(1)); if (MA_NGAN[id]) { id = MA_NGAN[id]; history.replaceState(null,'','#'+id); }
   const d = DD.find(x=>x.id===id);
