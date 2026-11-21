@@ -97,7 +97,7 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
 <div class="bang">
   <img src="anh/co-diem-phuong.jpg" alt="Cô Lê Trần Diễm Phương">
   <div class="ten">🗺️ QUÀ QUÊ CHẠM SỐ — BẢN ĐỒ CÁC MÓN QUÀ QUÊ AN GIANG<small>Một món quà nhỏ — hai câu chuyện · Quét mã — về tận nơi</small></div>
-  <div class="huy"><span class="h1">🏆 Khởi nghiệp sáng tạo 2026</span><span class="h2">V.1 (20/11/2026)</span></div>
+  <div class="huy"><span class="h1">🏆 Khởi nghiệp sáng tạo 2026</span><span class="h2">V.2 (21/11/2026)</span></div>
 </div>
 <div class="chuchay" aria-hidden="true"><div>🌟 DỰ ÁN «HỌC SINH VỚI Ý TƯỞNG KHỞI NGHIỆP SÁNG TẠO» NĂM 2026 — NHÓM 5 HỌC SINH LỚP 9 (9A1, 9A5, 9A7) · TRƯỜNG TH&amp;THCS CÁI DẦU, AN GIANG 🌟 &nbsp;&nbsp;&nbsp; 🌟 GIÁO VIÊN HƯỚNG DẪN: CÔ LÊ TRẦN DIỄM PHƯƠNG 🌟 &nbsp;&nbsp;&nbsp; 🌟 MỘT MÓN QUÀ NHỎ — HAI CÂU CHUYỆN: TAY EM LÀM, MÃ QR KỂ TIẾP 🌟 &nbsp;&nbsp;&nbsp; 🌟 <span id="dsMon"></span> 🌟</div></div>
 
@@ -114,6 +114,9 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
 
     <h2>Các món quà quê</h2>
     <div class="luoi" id="luoi"></div>
+
+    <h2>Sản phẩm thật của nhóm</h2>
+    <div class="o" style="padding:10px"><img src="anh/san-pham-moc-khoa-that.jpg" alt="Móc khoá đất sét hình đặc sản An Giang do nhóm học sinh làm" loading="lazy" style="width:100%;border-radius:12px;display:block"><p class="goiy" style="margin:8px 4px 2px">Móc khoá đất sét hình đặc sản An Giang — học sinh tự nặn, tô màu, phủ bóng; mỗi chiếc kèm thẻ mã QR.</p></div>
 
     <h2>Học sinh tự tay làm quà</h2>
     <div class="luoi" id="tayLam" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
@@ -173,6 +176,10 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
    ghim: toạ độ đặt ghim + nơi «Chỉ đường» dẫn tới
    p360: mã ảnh 360 trên Google Maps (null = chưa có → hiện ảnh vệ tinh)
    Nhóm HS chụp ảnh 360 mới → thay p360 + toạ độ ảnh, sửa dòng «noi360». */
+const TAY_LAM_CHUNG = [
+  {video:"video/tay-lam-ep-khuon-de-dia.mp4", anh:"anh/tay-lam-ep-khuon-de-dia.jpg", ten:"Ép khuôn tạo hình đế dĩa, con ghẹ", mon:"Công đoạn chung"},
+  {video:"video/tay-lam-ghe-len-mau.mp4", anh:"anh/tay-lam-ghe-len-mau.jpg", ten:"Lên màu từng chi tiết bằng cọ nhỏ", mon:"Công đoạn chung"}];
+const dsTay = d => d.tayLam ? [].concat(d.tayLam) : [];
 const DD = [
  {id:"ga-dot-o-thum", ten:"Gà đốt Ô Thum", vung:"Hồ Ô Thum · Tri Tôn", ghim:[10.37539,104.97688],
   p360:{ma:"CIHM0ogKEICAgIDc65f83gE", t:[10.413469,104.988596], huong:206}, noi360:"Hồ Tà Pạ (Tri Tôn), cách Ô Thum khoảng 4 km",
@@ -198,6 +205,8 @@ const DD = [
  {id:"lap-xuong-lang-cham", ten:"Lạp xưởng làng Chăm", vung:"Làng Chăm Châu Giang · Châu Phong", ghim:[10.7104094,105.1286151], tim:"Thánh đường Hồi giáo Mubarak Châu Giang",
   p360:null, noi360:"Thánh đường Hồi giáo Mubarak, làng Chăm Châu Giang",
   yt:"Hb6lErrhLiQ", nhan:"Video của nhóm học sinh trên YouTube (hình ảnh mô phỏng, có dùng công cụ AI)",
+  tayLam:[{video:"video/tay-lam-lap-xuong-nan.mp4", anh:"anh/tay-lam-lap-xuong-nan.jpg", ten:"Nặn từng khúc lạp xưởng bằng đất sét"},
+          {video:"video/tay-lam-lap-xuong-phu-bong.mp4", anh:"anh/tay-lam-lap-xuong-phu-bong.jpg", ten:"Phủ bóng, sấy đèn cho móc khoá cứng, bóng"}],
   loi:["Lạp xưởng có vị ngọt, thơm béo, chua nhẹ và đậm đà.","Ăn kèm rau sống, dưa leo; ghé làng Chăm bên kia sông Hậu, đối diện Châu Đốc."]},
  {id:"goi-ca-trich-phu-quoc", ten:"Gỏi cá trích", vung:"Làng chài Hàm Ninh · Phú Quốc", ghim:[10.1804,104.0454],
   p360:{ma:"CIHM0ogKEICAgIDqy4b98wE", t:[10.1804,104.0454], huong:15}, noi360:"Làng chài Hàm Ninh, Phú Quốc",
@@ -207,6 +216,7 @@ const DD = [
   loi:["Bánh hình bông hoa, vàng ươm, nhìn là muốn ăn.","Mua một hộp làm quà, ai cũng thích."]},
  {id:"ghe-ham-ninh", ten:"Ghẹ Hàm Ninh – bánh canh ghẹ", vung:"Làng chài Hàm Ninh · Phú Quốc", ghim:[10.1822,104.0478], tim:"Làng chài Hàm Ninh Phú Quốc ghẹ",
   p360:{ma:"CIHM0ogKEICAgIDqy4b98wE", t:[10.1804,104.0454], huong:15}, noi360:"Làng chài Hàm Ninh, Phú Quốc",
+  tayLam:[{video:"video/tay-lam-ghe-tao-hinh.mp4", anh:"anh/tay-lam-ghe-tao-hinh.jpg", ten:"Tạo hình con ghẹ: mai, càng, chân"}],
   loi:["Ghẹ tươi luộc chín, chấm muối tiêu chanh, ăn ngay bên bến cá.","Bánh canh ghẹ nóng hổi, có ghẹ, tôm, rau thơm — ngon nhất lúc hoàng hôn trên cầu cảng."]},
  {id:"nhum-bien-phu-quoc", ten:"Nhum biển nướng mỡ hành", vung:"Dinh Cậu, Dương Đông · Phú Quốc", ghim:[10.217215,103.956431], tim:"Nhum biển Phú Quốc",
   p360:{ma:"CIHM0ogKEICAgIDW6OS8-AE", t:[10.217215,103.956431], huong:90}, noi360:"Dinh Cậu, bờ biển Dương Đông, Phú Quốc",
@@ -246,7 +256,8 @@ function veTrangChu(){
     bien.push(d.ghim);
   });
   banDo.fitBounds(bien,{padding:[24,24]});
-  $('#tayLam').innerHTML = DD.filter(d=>d.tayLam).map(d=>`<div class="the" style="cursor:default"><video src="${d.tayLam.video}" poster="${d.tayLam.anh}" controls preload="none" playsinline style="border-radius:0;aspect-ratio:16/9"></video><div><b>${d.tayLam.ten}</b><span>Quà «${d.ten}» · video học sinh tự quay</span></div></div>`).join('') || '<div class="sap">Video «tay làm» sắp cập nhật</div>';
+  const tl = [...DD.flatMap(d=>dsTay(d).map(v=>({...v, mon:`Quà “${d.ten}”`}))), ...TAY_LAM_CHUNG];
+  $('#tayLam').innerHTML = tl.map(v=>`<div class="the" style="cursor:default"><video src="${v.video}" poster="${v.anh}" controls preload="none" playsinline style="border-radius:0;aspect-ratio:16/9"></video><div><b>${v.ten}</b><span>${v.mon} · video học sinh tự quay</span></div></div>`).join('') || '<div class="sap">Video “tay làm” sắp cập nhật</div>';
   $('#luoi').innerHTML = DD.map((d,i)=>`<a class="the" href="#${d.id}"><img src="anh/${d.id}.jpg" alt="${d.ten}" loading="lazy"><div><b><span class="so">${i+1}</span>${d.ten}</b><span>${d.vung}</span></div></a>`).join('');
 }
 
@@ -288,7 +299,8 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Chúng em làm món quà này thế nào</h3>
-        ${d.tayLam ? `<video src="${d.tayLam.video}" poster="${d.tayLam.anh}" controls preload="none" playsinline style="aspect-ratio:16/9;max-height:none"></video><span class="nhanai">${d.tayLam.ten} — video học sinh tự quay</span>` : `<div class="sap">🧶 Video «tay làm» của nhóm học sinh — sắp cập nhật</div>`}
+        ${dsTay(d).length ? dsTay(d).map(v=>`<video src="${v.video}" poster="${v.anh}" controls preload="none" playsinline style="aspect-ratio:16/9;max-height:none;margin-top:8px"></video><span class="nhanai">${v.ten} — video học sinh tự quay</span>`).join('') : `<div class="sap">🧶 Video “tay làm” của nhóm học sinh — sắp cập nhật</div>`}
+        <img src="anh/san-pham-moc-khoa-that.jpg" alt="Móc khoá đất sét thật của nhóm học sinh" loading="lazy" style="width:100%;border-radius:14px;display:block;margin-top:12px"><span class="nhanai">Móc khoá đất sét thật do nhóm học sinh làm</span>
       </div>
     </div>
     <h2>Các món quà quê khác</h2>
