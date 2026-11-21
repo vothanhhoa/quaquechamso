@@ -99,7 +99,7 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
   <div class="ten">🗺️ QUÀ QUÊ CHẠM SỐ — BẢN ĐỒ CÁC MÓN QUÀ QUÊ AN GIANG<small>Một món quà nhỏ — hai câu chuyện · Quét mã — về tận nơi</small></div>
   <div class="huy"><span class="h1">🏆 Khởi nghiệp sáng tạo 2026</span><span class="h2">V.2 (21/11/2026)</span></div>
 </div>
-<div class="chuchay" aria-hidden="true"><div>🌟 DỰ ÁN «HỌC SINH VỚI Ý TƯỞNG KHỞI NGHIỆP SÁNG TẠO» NĂM 2026 — NHÓM 5 HỌC SINH LỚP 9 (9A1, 9A5, 9A7) · TRƯỜNG TH&amp;THCS CÁI DẦU, AN GIANG 🌟 &nbsp;&nbsp;&nbsp; 🌟 GIÁO VIÊN HƯỚNG DẪN: CÔ LÊ TRẦN DIỄM PHƯƠNG 🌟 &nbsp;&nbsp;&nbsp; 🌟 MỘT MÓN QUÀ NHỎ — HAI CÂU CHUYỆN: TAY EM LÀM, MÃ QR KỂ TIẾP 🌟 &nbsp;&nbsp;&nbsp; 🌟 <span id="dsMon"></span> 🌟</div></div>
+<div class="chuchay" aria-hidden="true"><div>🌟 DỰ ÁN «HỌC SINH VỚI Ý TƯỞNG KHỞI NGHIỆP SÁNG TẠO» NĂM 2026 — NHÓM 5 HỌC SINH LỚP 9 (9A1, 9A5, 9A7) · TRƯỜNG TH&amp;THCS CÁI DẦU, AN GIANG 🌟 &nbsp;&nbsp;&nbsp; 🌟 GIÁO VIÊN HƯỚNG DẪN: CÔ LÊ TRẦN DIỄM PHƯƠNG 🌟 &nbsp;&nbsp;&nbsp; 🛒 NHẬN ĐẶT QUÀ THEO YÊU CẦU — LIÊN HỆ CÔ DIỄM PHƯƠNG: 0978.478.556 🛒 &nbsp;&nbsp;&nbsp; 🌟 MỘT MÓN QUÀ NHỎ — HAI CÂU CHUYỆN: TAY EM LÀM, MÃ QR KỂ TIẾP 🌟 &nbsp;&nbsp;&nbsp; 🌟 <span id="dsMon"></span> 🌟</div></div>
 
 <!-- ===== TRANG CHỦ ===== -->
 <div id="trangchu">
@@ -125,6 +125,17 @@ footer.chan{background:#0c1a45;color:#c9d3ee;margin-top:34px;font-size:14px}
     <div class="phim">
       <video src="video/hanh-trinh-8-mon.mp4" poster="anh/bia.jpg" controls preload="none" playsinline></video>
       <span class="nhanai">Video mô phỏng · hình ảnh, người dẫn do AI tạo</span>
+    </div>
+
+    <h2 id="dat-qua">Đặt quà · Liên hệ</h2>
+    <div class="o">
+      <p style="margin:0 0 8px">Bạn muốn đặt móc khoá đất sét, nam châm móc len hay làm quà theo yêu cầu (đổi món, đặt số lượng cho quán, homestay, sự kiện)? Nhóm học sinh nhận làm theo đơn. <b>Giáo viên hướng dẫn đứng tên nhận đơn</b> và trao đổi với khách thay các em.</p>
+      <p style="margin:0 0 10px">👩‍🏫 <b>Cô Lê Trần Diễm Phương</b> — Tổ phó chuyên môn, Trường TH&amp;THCS Cái Dầu (Châu Phú, An Giang)</p>
+      <div class="dong">
+        <a class="nut vang" href="tel:0978478556">📞 Gọi 0978.478.556</a>
+        <a class="nut phu" href="mailto:diemphuongcaidau@gmail.com?subject=%C4%90%E1%BA%B7t%20qu%C3%A0%20Qu%C3%A0%20Qu%C3%AA%20Ch%E1%BA%A1m%20S%E1%BB%91">✉️ diemphuongcaidau@gmail.com</a>
+      </div>
+      <p class="goiy" style="margin:10px 0 0">Khi đặt, bạn cho biết: tên món, số lượng, ngày cần nhận. Giá tham khảo: móc khoá đất sét 15.000–25.000 đ; nam châm móc len 35.000–100.000 đ tuỳ cỡ.</p>
     </div>
 
     <h2>Về dự án</h2>
@@ -307,6 +318,7 @@ function veDiaDiem(d){
       </div>
       <div class="o">
         <h3>Chúng em làm món quà này thế nào</h3>
+        <div class="dong" style="margin-bottom:6px"><a class="nut vang" href="tel:0978478556">🛒 Đặt quà “${d.ten}”</a><a class="nut phu" href="#" onclick="setTimeout(()=>document.getElementById('dat-qua').scrollIntoView(),300)">Liên hệ cô Phương</a></div>
         ${dsTay(d).length ? dsTay(d).map(v=>`<video src="${v.video}" poster="${v.anh}" controls preload="none" playsinline style="aspect-ratio:16/9;max-height:none;margin-top:8px"></video><span class="nhanai">${v.ten} — video học sinh tự quay</span>`).join('') : `<div class="sap">🧶 Video “tay làm” của nhóm học sinh — sắp cập nhật</div>`}
         <img src="anh/san-pham-moc-khoa-that.jpg" alt="Móc khoá đất sét thật của nhóm học sinh" loading="lazy" style="width:100%;border-radius:14px;display:block;margin-top:12px"><span class="nhanai">Móc khoá đất sét thật do nhóm học sinh làm</span>
       </div>
